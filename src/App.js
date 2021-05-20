@@ -1,49 +1,35 @@
-import imagePaths from './images/wildflower';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import ImageContainer from './components/ImageContainer';
+import ImageSelector from './components/ImageSelector';
 
 function App() {
+  const[index, setIndex] = useState(0);
 
-  useEffect(() => {
-      window.addEventListener("mousemove", parallax);
-
-      function parallax (e) {
-          document.querySelectorAll(".layer").forEach((layer) => {
-              const speed = layer.getAttribute("data-speed");
-              const x = (window.innerWidth - e.pageX*speed)/100;
-              const y = (window.innerHeight - e.pageY*speed)/100;
-            
-              layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
-          });
-      }
-  }, []);
+  const handleSelection = (i) => {
+    setIndex(i);
+    console.log(i);
+  }
 
   return (
-    <section style={{
-      position: "relative",
-      width: "100%",
-      height: "100vh",
-      overflow: "hidden",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
-
-          {imagePaths.map((item, i) => (
-          <img 
-              src={process.env.PUBLIC_URL + item.layer} alt="wildflower man" 
-              style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-              }}
-              className="layer"
-              data-speed={item.speed}
-          />
-      ))}
-    </section>
+    <div style={
+      {
+        width: "100%", 
+        height: "100vh", 
+        display: "flex", 
+        flexDirection: "column",
+        justifyContent: "center", 
+        alignItems: "center", 
+        backgroundColor: "#4c3366", 
+        overflow: "hidden"
+      }
+    }>
+      <div style={{width: 800, height: 400, boxShadow: "2px 2px 10px #0a080c, -3px -3px 10px #4c3366", borderRadius: 25, overflow: "hidden"}}>
+        <ImageContainer />
+      </div>
+        <ImageSelector 
+          handleSelection={handleSelection}
+        />
+    </div>
   );
 }
 
