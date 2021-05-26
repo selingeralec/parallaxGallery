@@ -1,7 +1,9 @@
-import imagePaths from '../images/wildflower';
+import wildflower from '../images/wildflower';
+import indian from '../images/indian';
+import almond from '../images/almondBlossom';
 import React, { useEffect } from 'react';
 
-function ImageContainer() {
+function ImageContainer({ image }) {
 
   useEffect(() => {
       window.addEventListener("mousemove", parallax);
@@ -17,6 +19,23 @@ function ImageContainer() {
       }
   }, []);
 
+  let images; 
+  
+  switch(image){
+    case "wildflower":
+      images = wildflower;
+      break;
+    case "indian":
+      images = indian;
+      break;
+    case "almond": 
+      images = almond;
+      break;
+
+    default: images = wildflower;
+  }
+
+
   return (
     <section style={{
       position: "relative",
@@ -28,16 +47,15 @@ function ImageContainer() {
       alignItems: "center"
     }}>
 
-          {imagePaths.map((item, i) => (
+          {images.map((item, i) => (
           <img 
               src={process.env.PUBLIC_URL + item.layer} alt="wildflower man" 
               style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+                  objectFit: "contain",
+                  width: "100%"
               }}
               className="layer"
               data-speed={item.speed}

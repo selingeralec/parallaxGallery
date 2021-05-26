@@ -3,11 +3,10 @@ import ImageContainer from './components/ImageContainer';
 import ImageSelector from './components/ImageSelector';
 
 function App() {
-  const[index, setIndex] = useState(0);
+  const[index, setIndex] = useState("wildflower");
 
   const handleSelection = (i) => {
     setIndex(i);
-    console.log(i);
   }
 
   return (
@@ -19,12 +18,14 @@ function App() {
         flexDirection: "column",
         justifyContent: "center", 
         alignItems: "center", 
-        backgroundColor: "#4c3366", 
+        backgroundColor: "rgb(47 59 82)", 
         overflow: "hidden"
       }
     }>
-      <div style={{width: 800, height: 400, boxShadow: "2px 2px 10px #0a080c, -3px -3px 10px #4c3366", borderRadius: 25, overflow: "hidden"}}>
-        <ImageContainer />
+      <div style={{ boxShadow: "2px 2px 10px #0a080c, -3px -3px 10px rgb(47 59 82)", borderRadius: 25, overflow: "hidden"}}>
+        <ImageContainer 
+          image={index}
+        />
       </div>
         <ImageSelector 
           handleSelection={handleSelection}

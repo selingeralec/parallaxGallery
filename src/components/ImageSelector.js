@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ImageSelector({ handleSelection }) {
-    const amount = [1, 2, 3, 4, 5];
+    const amount = ["wildflower", "indian", "almond"];
 
     return (
         <div style={{display: "flex", border: "1px solid white", marginTop: 30}}>
@@ -9,7 +9,7 @@ function ImageSelector({ handleSelection }) {
                 <div 
                     key={i} 
                     style={{height: 100, width: 170, backgroundColor: "white", marginRight: 10, cursor: "pointer"}}
-                    onClick={() => handleSelection(i)}
+                    onClick={() => handleSelection(item)}
                 >
                     item
                 </div>
