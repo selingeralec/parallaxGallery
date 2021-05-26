@@ -6,7 +6,9 @@ import React, { useEffect } from 'react';
 function ImageContainer({ image }) {
 
   useEffect(() => {
-      window.addEventListener("mousemove", parallax);
+    let root = document.querySelector("#img-gallery");
+
+      root.addEventListener("mousemove", parallax);
 
       function parallax (e) {
           document.querySelectorAll(".layer").forEach((layer) => {
@@ -23,16 +25,16 @@ function ImageContainer({ image }) {
   
   switch(image){
     case "wildflower":
-      images = wildflower;
+      images = wildflower.images;
       break;
     case "indian":
-      images = indian;
+      images = indian.images;
       break;
     case "almond": 
-      images = almond;
+      images = almond.images;
       break;
 
-    default: images = wildflower;
+    default: images = wildflower.images;
   }
 
 
@@ -54,7 +56,7 @@ function ImageContainer({ image }) {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  objectFit: "contain",
+                  objectFit: "cover",
                   width: "100%"
               }}
               className="layer"

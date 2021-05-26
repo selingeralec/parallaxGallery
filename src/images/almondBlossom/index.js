@@ -1,8 +1,8 @@
 import background from './background.png';
-import branch0 from './branch-0.png';
-import branch1 from './branch-1.png';
-import branch2 from './branch-2.png';
-import branch3 from './branch-3.png';
+import branch0 from './branch0.png';
+import branch1 from './branch1.png';
+import branch2 from './branch2.png';
+import branch3 from './branch3.png';
 
 export default {
   width: 1650,
